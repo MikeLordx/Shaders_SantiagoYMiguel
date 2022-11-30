@@ -6,32 +6,41 @@ using UnityEngine.UI;
 
 public class ButtonInteraction : MonoBehaviour
 {
-    public GameObject _button;
-    public Transform _rotation;
-    public Transform _scale;
+    public GameObject _rotateButton;
+    public GameObject _scaleButton;
+    private GameObject _GameObject;
 
     private void Start()
     {
-        _button.SetActive(false);
+        _rotateButton.SetActive(false);
+        _scaleButton.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _button.SetActive(true);
+        _rotateButton.SetActive(true);
+        _scaleButton.SetActive(true);
+        AssignGameObject(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     { 
-        _button.SetActive(false);
+        _rotateButton.SetActive(false);
+        _scaleButton.SetActive(false);
     }
 
     public void ObjectRotation()
     {
-        _rotation.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        _GameObject.transform.Rotate(5.0f, 10.0f, 5.0f, Space.Self);
     }
 
     public void ObjectScale()
     {
-        _scale.transform.localScale += new Vector3(1, 0, 0);
+        _GameObject.transform.localScale += new Vector3(1, 1, 1);
+    }
+
+    public void AssignGameObject(GameObject obj)
+    {
+        _GameObject = obj;
     }
 }
