@@ -5,7 +5,7 @@ Shader "Custom/2"
             _MainTex ("Base (RGB)", 2D) = "white" {}
             _DispTex ("Disp Texture", 2D) = "gray" {}
             _NormalMap ("Normalmap", 2D) = "bump" {}
-            _Displacement ("Displacement", Range(0, 1.0)) = 0.3
+            _Displacement ("Displacement", Range(0, 2.5)) = 0.3
             _Color ("Color", color) = (1,1,1,0)
             _SpecColor ("Spec color", color) = (0.5,0.5,0.5,0.5)
         }

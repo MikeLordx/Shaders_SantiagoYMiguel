@@ -2,49 +2,49 @@ Shader "Custom/3"
 {
     Properties
     {
-        _MainTex ("Main texture", 2D) = "white" {}
+        _MainTex ("Base (RGB)", 2D) = "white" {}
     }
-
+    
     SubShader
     {
+        Tags { "Queue" = "Transparent" }
+        
+        GrabPass {  }
+        
         Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
+            
             sampler2D _MainTex;
-            fixed _Twist;
-
-            struct vertexInput
+            sampler2D _GrabTexture;
+            
+            struct appdata
             {
                 float4 vertex : POSITION;
-                half2 texcoord : TEXCOORD0;
+                float2 texcoord : TEXCOORD0;
             };
-
-            struct vertexOuput
+            
+            struct v2f
             {
-                float4 pos : SV_POSITION;
-                half2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
             };
-
-            vertexOuput vert(vertexInput v)
+            
+            v2f vert(appdata v)
             {
-                vertexOuput o;
-                float s = sin(_SinTime.x * v.vertex.y);
-                float c = cos(_SinTime.x * v.vertex.y);
-                float2x2 rot = float2x2(c, -s, s, c);
-                v.vertex.xz = mul(rot, v.vertex.xz);
-                o.pos = UnityObjectToClipPos(v.vertex);
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.texcoord;
                 return o;
             }
-
-            fixed4 frag(vertexOuput i) : SV_TARGET
+            
+            fixed4 frag(v2f i) : SV_TARGET
             {
-                return tex2D(_MainTex, i.uv);
+                return tex2D(_GrabTexture, i.uv);
             }
             ENDCG
         }
     }
-}
+}   
