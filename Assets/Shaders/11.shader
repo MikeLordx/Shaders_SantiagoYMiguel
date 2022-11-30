@@ -30,6 +30,7 @@ Shader "Custom/11"
             
             vertexOuput vert(vertexInput v)
             {
+                //Rota la textura para dar apariencia de que el objeto se rota
                 vertexOuput o;
                 float s = sin(_SinTime.x * v.vertex.y);
                 float c = cos(_SinTime.x * v.vertex.y);
@@ -42,6 +43,7 @@ Shader "Custom/11"
                 
             fixed4 frag(vertexOuput i) : SV_TARGET
             {
+                //Regresa la textura final
                 return tex2D(_MainTex, i.uv);
             }
             ENDCG

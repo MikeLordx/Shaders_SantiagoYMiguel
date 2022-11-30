@@ -29,7 +29,9 @@ Shader "Custom/9"
         {
             float2 screenUV = IN.screenPos.xy / max(IN.screenPos.w, 1);
             screenUV *= _HologramTex_ST.xy;
+            //Decalara textura del holograma y el movimiento por la frecuencia
             fixed4 hologramCol = tex2D(_HologramTex, screenUV + (_Freq * _Time.y));
+            //Se mueve su transparencia
             _HologramColor *= (1.0 - hologramCol); 
             o.Albedo = _HologramColor.rgb;
             o.Emission = _HologramColor.rgb;

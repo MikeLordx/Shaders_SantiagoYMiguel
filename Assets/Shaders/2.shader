@@ -31,6 +31,7 @@ Shader "Custom/2"
 
             void disp (inout appdata v)
             {
+                //Separa los lados del objeto
                 float d = tex2Dlod(_DispTex, float4(v.texcoord.xy,0,0)).r * _Displacement;
                 v.vertex.xyz += v.normal * d;
             }
@@ -46,6 +47,7 @@ Shader "Custom/2"
 
             void surf (Input IN, inout SurfaceOutput o) 
             {
+                //Declara textura y normal
                 half4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
                 o.Albedo = c.rgb;
                 o.Specular = 0.2;

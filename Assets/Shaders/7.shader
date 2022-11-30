@@ -22,6 +22,7 @@ Shader "Custom/7"
 
         void vert(inout appdata_full v)
         {
+            //Hace un estilo movimiento de ola ademas de que se estira hasta regresar a su forma inicial constantemente
             float3 p = v.vertex.xyz;
             p.y = tan(p.x + _Time.y);
             v.texcoord.xyz = p * 3;

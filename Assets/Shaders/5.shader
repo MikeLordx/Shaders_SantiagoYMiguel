@@ -64,6 +64,7 @@ Shader "Custom/5" {
       
                  half4 frag(v2f i) : COLOR
                  {
+                     //Usando los numeros personalizados y con entrada de texto se modifica la textura
                      half4 col = tex2D(_MainTex, i.uv);
                      float3 shift = float3(_HueShift, _Sat, _Val);
                     

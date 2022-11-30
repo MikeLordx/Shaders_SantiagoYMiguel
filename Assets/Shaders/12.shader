@@ -38,7 +38,9 @@ Shader "Unlit/12"
             vertexOuput vert(vertexInput v)
             {
                 vertexOuput o;
+                //Deforma la textura
                 float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
+                //La deformacion se mueve para una posicion basada en un objeto
                 float4 distance = _MagnetPos - worldPos;
                 float r = clamp(length(distance.xz) / _Radius, 0.0, UNITY_PI);
                 worldPos.y += (cos(r) + 1) * distance.y * _Length;

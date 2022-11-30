@@ -21,6 +21,7 @@ Shader "Custom/WorldColor"
 
         void surf(Input IN, inout SurfaceOutput o) 
         {
+            //Crea con colores diferentes emisivos y se cambian por tiempo
             o.Emission = IN.worldPos.y > _YAxis ? abs(_SinTime).rgb : abs(_CosTime).rgb;
             o.Emission *= IN.worldPos.x > _XAxis ? abs(_SinTime).rgb : abs(_CosTime).rgb;
         }

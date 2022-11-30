@@ -54,6 +54,7 @@ Shader "Custom/4"
          
                 fixed4 frag (v2f i) : SV_Target
                 {
+                    //Aumenta intensidad y poder con sliders
                     half rim = 1 - saturate(dot(normalize(viewDir), i.normal));
                  
                     fixed4 col = tex2D(_MainTex, i.texcoord) * pow(rim, _FresnelPower) * _FresnelIntensity;;

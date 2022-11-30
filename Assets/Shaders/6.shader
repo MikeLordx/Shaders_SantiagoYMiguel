@@ -29,10 +29,12 @@ Shader "Custom/6"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
+            //Declara las texturas necesarias
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             fixed3 d = UnpackNormal(tex2D(_Normal, IN.uv_MainTex));
             float3 t = pow(2, _Color);
 
+            //Usando la variable integrada de CG _Time.y se cambia por cada textura declarada antes
             if (_Time.y >= 1 )
             {
                 o.Albedo = _Color;

@@ -42,6 +42,7 @@ Shader "Custom/3"
             
             fixed4 frag(v2f i) : SV_TARGET
             {
+                //Refleja la imagen detras del shader
                 return tex2D(_GrabTexture, i.uv);
             }
             ENDCG

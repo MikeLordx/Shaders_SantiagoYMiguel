@@ -33,6 +33,7 @@ Shader "Custom/8"
 			
 			fixed4 frag(v2f i) : SV_TARGET
 			{
+				//Con la variable _Scale se escala la textura por el seno de la posicion y tambien se mueve por tiempo
 			    const float PI = UNITY_PI;
 			    
 			    float v = 1.0;
